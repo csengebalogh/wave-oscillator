@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+@import "bootstrap";
+@import "bootstrap-icons";
+
+@font-face {
+    font-family: 'Wix Madefor Display', sans-serif;
+    
+    src: url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;600&display=swap');
+}
+
+body {
+    font-family: "Wix Madefor Display";
+}
