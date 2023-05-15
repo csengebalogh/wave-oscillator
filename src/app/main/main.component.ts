@@ -30,7 +30,7 @@ export class MainComponent implements OnInit {
       this.context.playback()
     } else {
       console.log("not playing")
-      this.context.resume()
+      this.context.suspend()
     }
   }
 
@@ -38,7 +38,7 @@ export class MainComponent implements OnInit {
   createInitialContext() {
     this.context = new CustomAudioContext(
       400, 
-      0.1, 
+      0.2, 
       'sine')
   }
 

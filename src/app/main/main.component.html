@@ -32,7 +32,8 @@
                 </svg> -->
 
             </div>
-            <div class="bg-dark col-md-8 p-3"></div>
+            <div class="col-md-8 p-3">
+            </div>
         </div>
 
         <hr>
@@ -41,7 +42,7 @@
             <p class="col-md-1">Gain</p>
             <input [(ngModel)]="gain" class="col-md-6" type="range" name="gain" id="gainInput" min='0' max="1"
                 step="0.01" >
-            <input [(ngModel)]="gain" class="col-md-1 mx-1 rounded-pill" type="number">
+            <input [(ngModel)]="gain" class="col-md-1 mx-1 rounded-pill" type="number" value="{{gain}}">
         </div>
 
         <div class="row my-2">
