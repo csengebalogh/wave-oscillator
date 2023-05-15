@@ -1,4 +1,30 @@
-.icon {
-    width: 42px;
-    height: 42px
+.container {
+    background-color: #82C0CC;
+}
+
+svg {
+    stroke: #16697A;
+    stroke-width: 7.5;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    fill: none;
+}
+
+svg:hover {
+    stroke: #82C0CC;
+
+}
+
+.btn-outline-primary {
+    background-color: #489FB5;
+    border: solid 1px #16697A;
+}
+
+.btn-outline-primary:hover {
+    background-color: #16697A;
+    border: solid 1.2px #82C0CC;
+}
+
+input[type="range"] {
+    padding: 0;
 }

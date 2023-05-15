@@ -10,8 +10,8 @@ const TOGGLE_BUTTON:HTMLElement | null  = document.getElementById('startBtn')
 })
 export class MainComponent implements OnInit {
 
-  frequency!:number
-  gain!:number
+  frequency:number = 400
+  gain:number = 0.1
 
   isPlaying:boolean = false
 
@@ -25,29 +25,25 @@ export class MainComponent implements OnInit {
       this.isPlaying = !this.isPlaying
     }
 
-    console.log(this.isPlaying );
-    if (this.isPlaying && TOGGLE_BUTTON != null) {
-      TOGGLE_BUTTON.innerHTML = 'f'
+    if (this.isPlaying) {
+      console.log("playing")
+      this.context.playback()
+    } else {
+      console.log("not playing")
+      this.context.resume()
     }
-
-
-
   }
 
   // STATIC VALUES
-  createContext() {
+  createInitialContext() {
     this.context = new CustomAudioContext(
       400, 
       0.1, 
       'sine')
   }
 
-  playback() {
-    this.context.playback()
-  }
- 
   ngOnInit(): void {
-    this.createContext()
+    this.createInitialContext()
   }
 
 }
