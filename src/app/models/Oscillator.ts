@@ -3,7 +3,7 @@ export class Oscillator {
     ctx!:AudioContext
     osc!:OscillatorNode
     gain!:GainNode
-    waveform!:string
+    waveform!:OscillatorType
     
     constructor(freq:number, gain:number, waveform:OscillatorType) {
         //define nodes
@@ -26,7 +26,7 @@ export class Oscillator {
         this.gain.gain.value = value
     }
 
-    setWaveForm(type:any) {
+    setWaveForm(type:OscillatorType) {
         this.osc.type = type
     }
 

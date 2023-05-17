@@ -1,62 +1,77 @@
 <section class="main">
-    <div class="container p-4">
+    <div class="container text-center p-4 rounded">
         <div class="row">
-            <p class="col-md-1">wave<br>type</p>
-            <div class="btn-group btn-group-toggle col-md-2" role="group" data-toggle="buttons">
+            <span class="col-md-1 my-auto ">Wave</span>
 
-                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                    <input type="radio" class="btn-check" name="waveform" id="square" autocomplete="off">
-                    <label class="btn btn-outline-primary" for="square"><svg viewBox="0 0 120 120" width="40" height="40"
-                        preserveAspectRatio="xMidYMid">
-                        <polyline points="0 60, 20 60, 20 20, 60 20, 60 100, 100 100, 100 60, 120 60" />
-                    </svg></label>
-
-                    <input type="radio" class="btn-check" name="waveform" id="triangle" autocomplete="off">
-                    <label class="btn btn-outline-primary" for="triangle"><svg viewBox="0 0 120 120" width="40" height="40"
-                        preserveAspectRatio="xMidYMid">
-                        <polyline points="0 60, 15 60, 35 20, 85 100, 105 60, 120 60" />
-                    </svg></label>
+            <div (input)="changeDetect(waveform, $event)" class="btn-group col-md-4 " role="group"
+                aria-label="Basic radio toggle button group">
+                <input value="sine" [(ngModel)]="waveform" type="radio" class="btn-check" id="sine" autocomplete="off">
+                <label class="btn my-auto " for="sine">sine</label>
 
 
+                <div>
+                    <input value="square" [(ngModel)]="waveform" type="radio" class="btn-check" id="square"
+                        autocomplete="off">
+                    <label class="btn my-auto" id="test" for="square">
+                        <svg viewBox="30 0 240 120" width="80" height="40" preserveAspectRatio="xMidYMid">
+                            <polyline
+                                points="0 100, 0 20, 60 20, 60 100, 120 100, 120 20, 180 20, 180 100, 240 100, 240 20, 300 20" />
+                        </svg>
+                    </label>
                 </div>
 
-                <!-- <svg role="button" class="btn btn-outline-primary" viewBox="0 0 120 120" width="40" height="40"
-                    preserveAspectRatio="xMidYMid">
-                    <polyline points="0 60, 20 60, 20 20, 60 20, 60 100, 100 100, 100 60, 120 60" />
-                </svg>
+                <div>
+                    <input value="triangle" [(ngModel)]="waveform" type="radio" class="btn-check" id="triangle"
+                        autocomplete="off">
+                    <label class="btn" for="triangle">
+                        <svg viewBox="15 0 240 120" width="80" height="40" preserveAspectRatio="xMidYMid">
+                            <polyline
+                                points="0 100, 30 20, 60 100, 90 20, 120 100, 150 20, 180 100, 210 20, 240 100, 270 20" />
+                        </svg>
+                    </label>
+                </div>
 
 
-                <svg role="button" class="btn btn-outline-primary" viewBox="0 0 120 120" width="40" height="40"
-                    preserveAspectRatio="xMidYMid">
-                    <polyline points="0 60, 15 60, 35 20, 85 100, 105 60, 120 60" />
-                </svg> -->
-
+                <div>
+                    <input value="sawtooth" [(ngModel)]="waveform" type="radio" class="btn-check" id="sawtooth"
+                        autocomplete="off">
+                    <label class="btn my-auto " for="sawtooth">
+                        <svg viewBox="30 0 240 120" width="80" height="40" preserveAspectRatio="xMidYMid">
+                            <polyline
+                                points="0 100, 60 20, 60 100, 120 20, 120 100, 180 20, 180 100, 240 20, 240 100, 300 20" />
+                        </svg>
+                    </label>
+                </div>
             </div>
-            <div class="col-md-8 p-3">
-            </div>
+
+            <span id="wavename" class="col-md-3 rounded p-3 text-uppercase text-light">{{waveform}}
+            </span>
         </div>
 
         <hr>
 
-        <div class="row my-2">
-            <p class="col-md-1">Gain</p>
-            <input (input)="changeDetect(gain)" [(ngModel)]="gain" class="col-md-6" type="range" name="gain" id="gainInput" min='0' max="1"
-                step="0.01" >
-            <input (input)="changeDetect(gain)" [(ngModel)]="gain" class="col-md-1 mx-1 rounded-pill" type="number" value="{{gain}}">
+        <div class="row my-2 p-1 ">
+            <label for="gainInput" class="col-md-1 my-auto">Gain</label>
+            <input (input)="changeDetect(gain)" [(ngModel)]="gain" class="col-md-6" type="range" name="gain"
+                id="gainInput" min='0' max="1" step="0.01">
+            <input (input)="changeDetect(gain)" [(ngModel)]="gain" class="col-md-1 mx-1 rounded-pill" type="number"
+                value="{{gain}}">
         </div>
 
-        <div class="row my-2">
-            <p class="col-md-1">Frequency</p>
-            <input (input)="changeDetect(frequency)" [(ngModel)]="frequency" class="col-md-6" type="range" name="freqRange" id="frequency" min='20'
-                max="20000" step="0.01"> 
-            <input (input)="changeDetect(frequency)" [(ngModel)]="frequency" type="number" class="col-md-1 mx-1 rounded-pill" value="{{frequency}}">
+        <div class="row my-2 p-1">
+            <label for="frequencyInput" class="col-md-1 my-auto">Frequency</label>
+            <input (input)="changeDetect(frequency)" [(ngModel)]="frequency" class="col-md-6" type="range"
+                name="freqRange" id="frequencyInput" min='20' max="20000" step="0.01">
+            <input (input)="changeDetect(frequency)" [(ngModel)]="frequency" type="number"
+                class="col-md-1 mx-1 rounded-pill" value="{{frequency}}">
         </div>
 
         <hr>
 
-        <div class="row my-2 text-center">
-            <!-- <button id="startBtn" class="btn btn-outline-secondary" (click)="playback()">Start</button> -->
-            <p><strong>Press SPACE to toggle playback / resume</strong></p>
+        <div class="row py-2 player">
+            <span class="my-auto"><strong>Press <kbd>SPACE</kbd> to toggle playback / resume</strong></span>
         </div>
     </div>
 </section>
+
+<!-- for tooltips: tabindex="0" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-trigger="hover" title="Sawtooth" -->

@@ -10,20 +10,22 @@ svg {
     fill: none;
 }
 
-svg:hover {
-    stroke: #82C0CC;
-
+label.btn:hover {
+    background-color: #EDE7E3;
 }
 
-.btn-outline-primary {
-    background-color: #489FB5;
-    border: solid 1px #16697A;
-}
-
-.btn-outline-primary:hover {
+.btn-check {
     background-color: #16697A;
-    border: solid 1.2px #82C0CC;
 }
+
+#wavename {
+    background-color: #16697A;
+}
+
+input {
+    background-color: transparent;
+}
+
 
 input[type="range"] {
     padding: 0;

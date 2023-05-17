@@ -1,8 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Oscillator } from '../models/Oscillator';
 
-const TOGGLE_BUTTON:HTMLElement | null  = document.getElementById('startBtn')
-
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -10,17 +8,18 @@ const TOGGLE_BUTTON:HTMLElement | null  = document.getElementById('startBtn')
 })
 export class MainComponent implements OnInit {
 
-  frequency:number = 400
-  gain:number = 0.1
+  frequency: number = 400
+  gain: number = 0.1
+  waveform: OscillatorType = 'sine'
 
-  isPlaying:boolean = false
+  isPlaying: boolean = false
 
-  osc!:Oscillator
+  osc!: Oscillator
 
   constructor() { }
 
   @HostListener('window:keyup', ['$event'])
-  keyEvent(event: KeyboardEvent) { 
+  keyEvent(event: KeyboardEvent) {
     if (event.keyCode === 32) {
       this.isPlaying = !this.isPlaying
     } else {
@@ -29,38 +28,49 @@ export class MainComponent implements OnInit {
 
     if (this.isPlaying) {
       console.log("playing")
-      this.osc = new Oscillator(this.frequency, this.gain, 'sine')
-      this.osc.playback()   
+      this.osc = new Oscillator(this.frequency, this.gain, this.waveform)
+      this.osc.playback()
     } else {
       console.log("not playing")
       this.osc.suspend()
     }
   }
 
-  changeDetect(param:number) {
-    switch (param) {
-      case this.frequency:
+  changeDetect(param: any, e?: any) {
+
+    try {
+      switch (param) {
+        case this.frequency:
           this.osc.setFreq(this.frequency)
-        break;
-      case this.gain:
+          break;
+        case this.gain:
           this.osc.setGain(this.gain)
           break;
-      default:
-        break;
+        case this.waveform:
+          this.osc.setWaveForm(e.target.value)
+          break;
+        default:
+          break;
+      }
+    } catch (e) {
+      console.log("An instance of the oscillator has not yet been initialized. Press Space.")
     }
+
 
   }
 
   // STATIC VALUES
-  createOscillator() {
-    // this.osc = new Oscillator(
-    //   this.frequency, 
-    //   this.gain, 
-    //   'sine')
+  initOscillator() {
+    this.osc = new Oscillator(
+      this.frequency,
+      this.gain,
+      this.waveform)
   }
 
   ngOnInit(): void {
-    this.createOscillator()
+    // this.initOscillator()
+    console.log(this.waveform, this.frequency, this.gain);
+
   }
 
 }
