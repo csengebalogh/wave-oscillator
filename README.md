@@ -5,12 +5,12 @@ My work is not based on any specific tutorial or article. I aim to solve the cha
 
 ## Usage & Demo
 
-later
+For best experience, use headphones or speakers.
 
 ## TODO
 
-- refactor CustomAudioContext
-- pass input values
-- test test test
-- credits page
-- user friendly layout
+- credits page images bugfix
+- user friendly layout 
+- draw some sine svg
+- mobile (?)
+
