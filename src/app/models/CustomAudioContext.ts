@@ -17,18 +17,22 @@ export class CustomAudioContext {
     }
 
     playback() {
+        var now = this.context.currentTime
+
         this.oscillator.connect(this.gain)
         this.gain.connect(this.context.destination)
-        
+        this.oscillator.start(now)
 
-        var now = this.context.currentTime
-        if (this.context.state == "suspended") {
-            this.context.resume()
-        } else {
-            this.oscillator.start(now)
+        switch (this.context.state) {
+            case "suspended":
+                this.context.resume()
+                break;
+            case "running": 
+                console.log("running")
+                break;
+            default:
+                break;
         }
-        console.log(this.context.state)
-
 
     }
 

@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import {CustomAudioContext} from '../models/CustomAudioContext'
+import { Oscillator } from '../models/Oscillator';
 
 const TOGGLE_BUTTON:HTMLElement | null  = document.getElementById('startBtn')
 
@@ -15,7 +15,7 @@ export class MainComponent implements OnInit {
 
   isPlaying:boolean = false
 
-  context!:CustomAudioContext
+  osc!:Oscillator
 
   constructor() { }
 
@@ -27,18 +27,32 @@ export class MainComponent implements OnInit {
 
     if (this.isPlaying) {
       console.log("playing")
-      this.context.playback()
+      this.osc.playback()
     } else {
       console.log("not playing")
-      this.context.suspend()
+      this.osc.suspend()
     }
+  }
+
+  changeDetect(param:number) {
+    switch (param) {
+      case this.frequency:
+          this.osc.setFreq(this.frequency)
+        break;
+      case this.gain:
+          this.osc.setGain(this.gain)
+          break;
+      default:
+        break;
+    }
+
   }
 
   // STATIC VALUES
   createInitialContext() {
-    this.context = new CustomAudioContext(
-      400, 
-      0.2, 
+    this.osc = new Oscillator(
+      this.frequency, 
+      this.gain, 
       'sine')
   }
 
