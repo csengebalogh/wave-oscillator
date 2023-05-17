@@ -23,11 +23,14 @@ export class MainComponent implements OnInit {
   keyEvent(event: KeyboardEvent) { 
     if (event.keyCode === 32) {
       this.isPlaying = !this.isPlaying
+    } else {
+      return
     }
 
     if (this.isPlaying) {
       console.log("playing")
-      this.osc.playback()
+      this.osc = new Oscillator(this.frequency, this.gain, 'sine')
+      this.osc.playback()   
     } else {
       console.log("not playing")
       this.osc.suspend()
@@ -49,15 +52,15 @@ export class MainComponent implements OnInit {
   }
 
   // STATIC VALUES
-  createInitialContext() {
-    this.osc = new Oscillator(
-      this.frequency, 
-      this.gain, 
-      'sine')
+  createOscillator() {
+    // this.osc = new Oscillator(
+    //   this.frequency, 
+    //   this.gain, 
+    //   'sine')
   }
 
   ngOnInit(): void {
-    this.createInitialContext()
+    this.createOscillator()
   }
 
 }

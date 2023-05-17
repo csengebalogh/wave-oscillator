@@ -36,13 +36,17 @@ export class Oscillator {
     }
 
     playback() {
+        console.log(this.ctx.state);
         var now = this.ctx.currentTime
 
         switch (this.ctx.state) {
             case "suspended":
-                this.osc.start(now)
+                // this.osc.start(now)
+                console.log(this.ctx.state);
+                
                 break;
             case "running": 
+                this.osc.start(now)
                 break;
             default:
                 break;
@@ -51,6 +55,10 @@ export class Oscillator {
     }
 
     suspend() {
+        this.osc.stop(0)
+        this.osc.disconnect()
         this.ctx.suspend()
+        console.log(this.ctx.state);
+        
     }
 }
