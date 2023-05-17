@@ -36,7 +36,7 @@ export class MainComponent implements OnInit {
     }
   }
 
-  changeDetect(param: any, e?: any) {
+  setParam(param: any, e?: any) {
 
     try {
       switch (param) {

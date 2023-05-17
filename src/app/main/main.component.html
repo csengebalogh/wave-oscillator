@@ -3,7 +3,7 @@
         <div class="row">
             <span class="col-md-1 my-auto ">Wave</span>
 
-            <div (input)="changeDetect(waveform, $event)" class="btn-group col-md-4 " role="group"
+            <div (input)="setParam(waveform, $event)" class="btn-group col-md-4 " role="group"
                 aria-label="Basic radio toggle button group">
                 <input value="sine" [(ngModel)]="waveform" type="radio" class="btn-check" id="sine" autocomplete="off">
                 <label class="btn my-auto " for="sine">sine</label>
@@ -52,17 +52,17 @@
 
         <div class="row my-2 p-1 ">
             <label for="gainInput" class="col-md-1 my-auto">Gain</label>
-            <input (input)="changeDetect(gain)" [(ngModel)]="gain" class="col-md-6" type="range" name="gain"
+            <input (input)="setParam(gain)" [(ngModel)]="gain" class="col-md-6" type="range" name="gain"
                 id="gainInput" min='0' max="1" step="0.01">
-            <input (input)="changeDetect(gain)" [(ngModel)]="gain" class="col-md-1 mx-1 rounded-pill" type="number"
+            <input (input)="setParam(gain)" [(ngModel)]="gain" class="col-md-1 mx-1 rounded-pill" type="number"
                 value="{{gain}}">
         </div>
 
         <div class="row my-2 p-1">
             <label for="frequencyInput" class="col-md-1 my-auto">Frequency</label>
-            <input (input)="changeDetect(frequency)" [(ngModel)]="frequency" class="col-md-6" type="range"
+            <input (input)="setParam(frequency)" [(ngModel)]="frequency" class="col-md-6" type="range"
                 name="freqRange" id="frequencyInput" min='20' max="20000" step="0.01">
-            <input (input)="changeDetect(frequency)" [(ngModel)]="frequency" type="number"
+            <input (input)="setParam(frequency)" [(ngModel)]="frequency" type="number"
                 class="col-md-1 mx-1 rounded-pill" value="{{frequency}}">
         </div>
 
